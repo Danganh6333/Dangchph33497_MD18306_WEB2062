@@ -28,8 +28,6 @@ const account4 = {
   pin: 4444,
 };
 
-
-
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
 const labelBalance = document.querySelector(".balance__value");
@@ -63,10 +61,10 @@ const accounts = [account1, account2, account3, account4];
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //==========================Bài 1===============================
 let currentAccount;
-btnLogin.addEventListener('click', function (e) {
+btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    (acc) => acc.username === inputLoginUsername.value
   );
   console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
@@ -80,26 +78,26 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 //==========================BÀI 2===================
-btnTransfer.addEventListener('click', function (e) {
+btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
-  acc => acc.username === inputTransferTo.value
+    (acc) => acc.username === inputTransferTo.value
   );
-  inputTransferAmount.value = inputTransferTo.value = '';
+  inputTransferAmount.value = inputTransferTo.value = "";
   if (
-  amount > 0 &&
-  receiverAcc &&
-  currentAccount.balance >= amount &&
-  receiverAcc?.username !== currentAccount.username
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
   ) {
-  // Doing the transfer
-  currentAccount.movements.push(-amount);
-  receiverAcc.movements.push(amount);
-  // Update UI
-  updateUI(currentAccount);
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    // Update UI
+    updateUI(currentAccount);
   }
-  });
+});
 
 //====================BÀI 3====================
 //1.
